@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <ProgressBar
+            android:id="@+id/loading"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:text="@string/response_code_empty"
+            android:layout_width="0dp"
+            android:maxLines="2"
+            android:textSize="24sp"
+            android:ellipsize="marquee"
+            android:layout_height="wrap_content"
+            android:id="@+id/responseCode" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"/>
+
+    <TextView
+            tools:text="@string/times_fetched"
+            android:textSize="24sp"
+            android:layout_width="0dp"
+            android:maxLines="2"
+            android:layout_height="wrap_content"
+            android:id="@+id/timesFetched"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/responseCode"/>
+
+
+    <Button
+            android:text="@string/fetch_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/fetchDataButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/timesFetched"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

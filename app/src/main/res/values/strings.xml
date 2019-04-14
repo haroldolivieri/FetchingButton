@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FetchingButton</string>
+    <string name="fetch_content">Fetch Content</string>
+    <string name="times_fetched">Times fetched: %1$d</string>
+    <string name="response_code">Response Code: %1$s</string>
+    <string name="response_code_error">Error fetching response code</string>
+    <string name="retry">Retry</string>
+    <string name="next_path_error">Error fetching next path</string>
+    <string name="response_code_empty">-</string>
+</resources>
