@@ -2,11 +2,7 @@ package haroldolivieri.challenge.fetchingbutton.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.jakewharton.rxbinding2.view.clicks
-import haroldolivieri.challenge.App
-import haroldolivieri.challenge.R
-import haroldolivieri.challenge.changeVisibility
-import haroldolivieri.challenge.showSnackbar
+import haroldolivieri.challenge.*
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -29,7 +25,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun clicks(): Observable<Unit> =
-        fetchDataButton.clicks()
+        fetchDataButton.debounceClicks()
 
     override fun showLoading() {
         loading.changeVisibility(true)

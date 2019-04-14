@@ -12,7 +12,6 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposables
 import io.reactivex.rxkotlin.addTo
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor(
@@ -30,7 +29,6 @@ class MainPresenter @Inject constructor(
         this.view = view
 
         view.clicks()
-            .throttleFirst(600, TimeUnit.MILLISECONDS)
             .flatMap {
                 nextPathInteractor.events()
             }.subscribe { event ->

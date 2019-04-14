@@ -12,15 +12,6 @@ data class Event<T>(val type: Type, val data: T?, val error: Throwable?) {
         fun <T> error(error: Throwable): Event<T> = Event(Type.ERROR, null, error)
     }
 
-    val isLoading: Boolean
-        get() = type == Type.LOADING
-
-    val isError: Boolean
-        get() = type == Type.ERROR
-
-    val hasData: Boolean
-        get() = type == Type.IDLE
-
     enum class Type {
         LOADING, IDLE, ERROR
     }

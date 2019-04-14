@@ -21,8 +21,8 @@ class NetworkModule {
 
     @Provides
     @ApplicationScope
-    fun provideProductService(retrofit: Retrofit): Gateway.Api =
-            retrofit.create(Gateway.Api::class.java)
+    fun provideApi(retrofit: Retrofit): Gateway.Api =
+        retrofit.create(Gateway.Api::class.java)
 
     @Provides
     @ApplicationScope
@@ -39,23 +39,23 @@ class NetworkModule {
     @Provides
     @ApplicationScope
     fun provideOkHttpClientBuilder(
-            httpLoggingInterceptor: HttpLoggingInterceptor
+        httpLoggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient.Builder =
-            OkHttpClient().newBuilder()
-                    .addInterceptor(httpLoggingInterceptor)
-                    .readTimeout(TIMEOUT, TimeUnit.SECONDS)
-                    .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+        OkHttpClient().newBuilder()
+            .addInterceptor(httpLoggingInterceptor)
+            .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
 
     @Provides
     @ApplicationScope
     fun provideRetrofit(
-            okHttpClient: OkHttpClient,
-            @IOScheduler scheduler: Scheduler
+        okHttpClient: OkHttpClient,
+        @IOScheduler scheduler: Scheduler
     ): Retrofit =
-            Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(scheduler))
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(okHttpClient)
-                    .build()
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(scheduler))
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
 }
