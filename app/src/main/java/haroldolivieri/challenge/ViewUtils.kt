@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.Button
 import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.rxbinding2.view.clicks
+import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
 
 fun View.showSnackbar(message: Int, actionTitle: Int? = null, action: () -> Unit = {}) {
@@ -17,7 +18,7 @@ fun View.showSnackbar(message: Int, actionTitle: Int? = null, action: () -> Unit
     }
 }
 
-fun Button.debounceClicks() = clicks().throttleFirst(600, TimeUnit.MILLISECONDS)
+fun Button.debounceClicks(): Observable<Unit> = clicks().throttleFirst(600, TimeUnit.MILLISECONDS)
 
 fun View.changeVisibility(visible: Boolean) {
     this.visibility = if (visible) {

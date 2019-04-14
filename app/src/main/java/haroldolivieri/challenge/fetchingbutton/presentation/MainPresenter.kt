@@ -5,7 +5,7 @@ import haroldolivieri.challenge.StringResolver
 import haroldolivieri.challenge.fetchingbutton.interactor.NextPathInteractor
 import haroldolivieri.challenge.fetchingbutton.interactor.ResponseCodeInteractor
 import haroldolivieri.challenge.model.CorrectPath
-import haroldolivieri.challenge.network.CounterProvider
+import haroldolivieri.challenge.fetchingbutton.CounterProvider
 import haroldolivieri.challenge.request.Event
 import haroldolivieri.challenge.request.reducer
 import io.reactivex.Observable
@@ -21,7 +21,7 @@ class MainPresenter @Inject constructor(
     private val stringResolver: StringResolver
 ) {
 
-    var view: MainView? = null
+    private var view: MainView? = null
     private val disposables = CompositeDisposable()
     private var disposable = Disposables.disposed()
 

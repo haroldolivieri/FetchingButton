@@ -4,7 +4,6 @@ import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
 import haroldolivieri.challenge.fetchingbutton.presentation.MainActivity
-import haroldolivieri.challenge.network.NetworkModule
 import javax.inject.Scope
 
 @ApplicationScope

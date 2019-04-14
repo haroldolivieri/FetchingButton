@@ -18,10 +18,24 @@ class MainActivity : AppCompatActivity(), MainView {
         performInjections()
 
         presenter.onAttach(this)
+
+        savedInstanceState?.let {
+            responseCode.text = it.getString(LAST_RESPONSE_CODE)
+        }
     }
 
     private fun performInjections() {
         (application as App).component.inject(this)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putString(LAST_RESPONSE_CODE, responseCode.text.toString())
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDetach()
     }
 
     override fun clicks(): Observable<Unit> =
@@ -51,8 +65,7 @@ class MainActivity : AppCompatActivity(), MainView {
         timesFetched.text = times
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDetach()
+    companion object {
+        private const val LAST_RESPONSE_CODE = "last_response_code"
     }
 }

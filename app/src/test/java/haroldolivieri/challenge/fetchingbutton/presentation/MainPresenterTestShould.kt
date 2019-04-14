@@ -8,7 +8,7 @@ import haroldolivieri.challenge.fetchingbutton.interactor.NextPathInteractor
 import haroldolivieri.challenge.fetchingbutton.interactor.ResponseCodeInteractor
 import haroldolivieri.challenge.model.CorrectPath
 import haroldolivieri.challenge.model.ResponseCode
-import haroldolivieri.challenge.network.CounterProvider
+import haroldolivieri.challenge.fetchingbutton.CounterProvider
 import haroldolivieri.challenge.request.Event
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.SingleSubject

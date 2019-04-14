@@ -1,8 +1,7 @@
-package haroldolivieri.challenge.network
+package haroldolivieri.challenge.di
 
 import dagger.Module
 import dagger.Provides
-import haroldolivieri.challenge.di.ApplicationScope
 import haroldolivieri.challenge.fetchingbutton.gateway.Gateway
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
