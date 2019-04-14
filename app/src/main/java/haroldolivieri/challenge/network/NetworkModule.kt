@@ -3,9 +3,8 @@ package haroldolivieri.challenge.network
 import dagger.Module
 import dagger.Provides
 import haroldolivieri.challenge.di.ApplicationScope
-import haroldolivieri.challenge.di.IOScheduler
 import haroldolivieri.challenge.fetchingbutton.gateway.Gateway
-import io.reactivex.Scheduler
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -49,12 +48,11 @@ class NetworkModule {
     @Provides
     @ApplicationScope
     fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        @IOScheduler scheduler: Scheduler
+        okHttpClient: OkHttpClient
     ): Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(scheduler))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

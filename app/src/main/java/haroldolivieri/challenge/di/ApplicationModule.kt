@@ -18,16 +18,7 @@ class ApplicationModule {
     fun provideContext(application: Application): Context = application
 
     @Provides
-    @IOScheduler
-    @ApplicationScope
-    fun providesScheduler(): Scheduler = Schedulers.io()
-
-    @Provides
     @ApplicationScope
     fun provideSharedPreferences(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 }
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class IOScheduler
